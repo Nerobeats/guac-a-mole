@@ -36,3 +36,28 @@
     transform: rotate(360deg);
   }
 }
+
+.hole {
+  margin: 2px;
+  overflow: hidden;
+  width: 10vw;
+  height: 10vw;
+}
+
+.mound {
+  background-image: url(./assets/mound.svg);
+  background-position: right 5px bottom 0px;
+  background-size: 95%;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  bottom: 99%;
+  pointer-events: none;
+  backface-visibility: hidden;
+}
+
+.wack {
+  width: 100%;
+  height: 100%;
+}
