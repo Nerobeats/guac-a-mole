@@ -1,64 +1,30 @@
 import React from "react";
 import Hole from "./Hole";
-
-function Board() {
-  return (
-    <div className="container">
-      <div className="row mt-5">
-        <div className="col">
-          <div className="text-center">
-            <Hole />
-          </div>
-        </div>
-
-        <div className="col">
-          <div className="text-center">
-            <Hole />
-          </div>
-        </div>
-        <div className="col">
-          <div className="text-center">
-            <Hole />
-          </div>
+import { connect } from "react-redux";
+function mapping(size) {
+  let arr = [];
+  let board = [];
+  for (let i = 0; i < size; i++) {
+    arr.push(
+      <div className="col">
+        <div className="text-center">
+          <Hole />
         </div>
       </div>
-      <div className="row mt-5">
-        <div className="col">
-          <div className="text-center">
-            <Hole />
-          </div>
-        </div>
+    );
+  }
 
-        <div className="col">
-          <div className="text-center">
-            <Hole />
-          </div>
-        </div>
-        <div className="col">
-          <div className="text-center">
-            <Hole />
-          </div>
-        </div>
-      </div>
-      <div className="row mt-5">
-        <div className="col">
-          <div className="text-center">
-            <Hole />
-          </div>
-        </div>
-
-        <div className="col">
-          <div className="text-center">
-            <Hole />
-          </div>
-        </div>
-        <div className="col">
-          <div className="text-center">
-            <Hole />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+  for (let i = 0; i < size; i++) {
+    board.push(<div className="row mt-2">{arr}</div>);
+  }
+  return board;
 }
-export default Board;
+function Board(props) {
+  return <div className="container">{mapping(props.size)}</div>;
+}
+const mapStateToProps = state => {
+  return {
+    size: state.board.size
+  };
+};
+export default connect(mapStateToProps)(Board);
