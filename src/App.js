@@ -1,0 +1,18 @@
+import React from "react";
+import "./App.css";
+import Home from "./Home";
+import Board from "./Board";
+import { Switch, Route, Redirect } from "react-router-dom";
+function App() {
+  return (
+    <div className="App">
+      <Switch>
+        <Route path="/home/" component={Home} />
+        <Route path="/start/" component={Board} />
+        <Redirect to="/home/" />
+      </Switch>
+    </div>
+  );
+}
+// 7otto kolo ya 3abood
+export default App;
