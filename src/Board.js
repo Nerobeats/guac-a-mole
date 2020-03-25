@@ -13,6 +13,7 @@ function mapping(size) {
       </div>
     );
   }
+  // can you see me ?
 
   for (let i = 0; i < size; i++) {
     board.push(<div className="row mt-2">{arr}</div>);
