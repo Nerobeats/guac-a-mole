@@ -57,6 +57,17 @@
   backface-visibility: hidden;
 }
 
+.mole {
+  background-image: url(./assets/bebsi-nobg.png);
+  background-size: 80px;
+  background-repeat: no-repeat;
+  background-position: top;
+  height: 100%;
+  transform: translate(0, 50%);
+  transition: all 0.4s;
+  cursor: pointer;
+}
+
 .wack {
   width: 100%;
   height: 100%;

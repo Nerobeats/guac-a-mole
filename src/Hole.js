@@ -2,11 +2,14 @@ import React from "react";
 
 const Hole = () => {
   return (
-    <div className="mound">
-      <div className="whack">
-        <div className="hole"></div>
+    <>
+      {/* <div className="animated shake"> */}
+      <div className="animated slideInUp">
+        <div className="mole">
+          <div className="hole"></div>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
