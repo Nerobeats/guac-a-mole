@@ -1,2 +1,2 @@
-export { setSize } from "./Board";
-export { SET_SIZE } from "./actionTypes";
+export { setSize, getScore } from "./Board";
+export { SET_SIZE, GET_SCORE } from "./actionTypes";

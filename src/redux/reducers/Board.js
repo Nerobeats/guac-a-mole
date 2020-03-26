@@ -1,6 +1,6 @@
-import { SET_SIZE } from "../actions";
+import { SET_SIZE, GET_SCORE } from "../actions";
 
-const initialState = { size: 3 };
+const initialState = { size: 3, score: 0 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -9,8 +9,14 @@ const reducer = (state = initialState, action) => {
         ...state,
         size: action.payload
       };
+    case GET_SCORE:
+      return {
+        ...state,
+        score: action.payload + state.score
+      };
     default:
       return state;
   }
 };
+
 export default reducer;

@@ -1,23 +1,19 @@
 import React, { Component } from "react";
+import { getScore } from "./redux/actions";
+import { connect } from "react-redux";
 
 export class Hole extends Component {
   state = {
     up: false,
     counter: 0,
-    clicked: true,
-    score: 0
+    clicked: true
   };
-
-  // const randomTime = (min, max) => {
-  //   Math.round(Math.random() * (max - min) + min);
-  // };
-  // const randomMole = moles => {
-  //   const idx = Math.floor(Math.random() * this.moleNumer);
-  // };
 
   peep = () => {
     if (this.state.counter < 2) {
       this.setState({ up: !this.state.up, counter: (this.state.counter += 1) });
+    } else {
+      this.setState({ counter: 0, clicked: true });
     }
   };
 
@@ -31,7 +27,7 @@ export class Hole extends Component {
 
   whack = () => {
     if (this.state.clicked) {
-      this.setState({ score: (this.state.score += 1) });
+      this.props.getScore(1);
     }
     this.setState({ clicked: false });
   };
@@ -53,10 +49,22 @@ export class Hole extends Component {
           alt="mound"
           className="mound-pic"
         />
-        <div class="mask"></div>
+        <div className="mask"></div>
       </div>
     );
   }
 }
 
-export default Hole;
+const mapStateToProps = state => {
+  return {
+    score: state.board.score
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getScore: score => dispatch(getScore(score))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Hole);

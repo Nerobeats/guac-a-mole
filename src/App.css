@@ -37,11 +37,22 @@
   }
 }
 
+.btn-xl {
+  padding: 20px 40px;
+  font-size: 20px;
+  border-radius: 10px;
+}
+
+.margin {
+  margin: auto;
+}
+
 .box {
   width: 200px;
   height: 200px;
   padding: 10px;
-  float: left;
+  float: none;
+  margin: auto;
   position: relative;
   overflow: hidden;
 }
