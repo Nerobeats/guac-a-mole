@@ -1,2 +1,2 @@
-export { setSize, getScore } from "./Board";
-export { SET_SIZE, GET_SCORE } from "./actionTypes";
+export { setSettings, getScore } from "./Board";
+export { SET_SETTINGS, GET_SCORE } from "./actionTypes";

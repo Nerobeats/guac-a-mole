@@ -11,14 +11,17 @@ export class Hole extends Component {
 
   peep = () => {
     if (this.state.counter < 2) {
-      this.setState({ up: !this.state.up, counter: (this.state.counter += 1) });
+      this.setState({
+        up: !this.state.up,
+        counter: (this.state.counter += 1)
+      });
     } else {
       this.setState({ counter: 0, clicked: true });
     }
   };
 
   componentDidMount() {
-    this.interval = setInterval(this.peep, 1000);
+    this.interval = setInterval(this.peep, 3000 * this.props.speed);
   }
 
   componentWillUnmount() {
@@ -28,8 +31,10 @@ export class Hole extends Component {
   whack = () => {
     if (this.state.clicked) {
       this.props.getScore(1);
+      this.setState({
+        clicked: false
+      });
     }
-    this.setState({ clicked: false });
   };
 
   render() {
@@ -39,13 +44,14 @@ export class Hole extends Component {
         alt="mole"
         className={this.state.up ? "mole-pic-up" : "mole-pic-down"}
         onClick={this.whack}
+        style={{ transition: `bottom ${this.props.speed}s ease` }}
       />
     );
     return (
       <div className="box">
         {this.props.show ? mole : <></>}
         <img
-          src="https://raw.githubusercontent.com/Nerobeats/guac-a-mole/master/src/assets/hiclipart.com.png"
+          src="https://raw.githubusercontent.com/Nerobeats/guac-a-mole/master/src/assets/cropped_ice.png"
           alt="mound"
           className="mound-pic"
         />
@@ -57,7 +63,9 @@ export class Hole extends Component {
 
 const mapStateToProps = state => {
   return {
-    score: state.board.score
+    score: state.board.score,
+    speed: state.board.speed,
+    size: state.board.size
   };
 };
 

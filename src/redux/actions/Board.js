@@ -1,8 +1,11 @@
-import { SET_SIZE, GET_SCORE } from "./actionTypes";
-export const setSize = size => {
+import { GET_SCORE, SET_SETTINGS } from "./actionTypes";
+export const setSettings = (speed, size) => {
   return {
-    type: SET_SIZE,
-    payload: size
+    type: SET_SETTINGS,
+    payload: {
+      speed: speed,
+      size: size
+    }
   };
 };
 

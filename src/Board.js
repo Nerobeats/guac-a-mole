@@ -20,7 +20,7 @@ class Board extends Component {
           cycle: !this.state.cycle,
           mapping: this.mapping(this.props.size)
         }),
-      3000
+      9000 * this.props.speed
     );
   }
 
@@ -42,7 +42,10 @@ class Board extends Component {
         arr.push(
           <div className="col">
             <div className="text-center">
-              <Hole show={count === randNum ? true : false} />
+              <Hole
+                key={this.props.speed}
+                show={count === randNum ? true : false}
+              />
             </div>
           </div>
         );
@@ -70,7 +73,8 @@ class Board extends Component {
 const mapStateToProps = state => {
   return {
     size: state.board.size,
-    score: state.board.score
+    score: state.board.score,
+    speed: state.board.speed
   };
 };
 export default connect(mapStateToProps)(Board);

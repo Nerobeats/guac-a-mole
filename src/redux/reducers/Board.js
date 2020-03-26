@@ -1,13 +1,14 @@
-import { SET_SIZE, GET_SCORE } from "../actions";
+import { GET_SCORE, SET_SETTINGS } from "../actions";
 
-const initialState = { size: 3, score: 0 };
+const initialState = { score: 0 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_SIZE:
+    case SET_SETTINGS:
       return {
         ...state,
-        size: action.payload
+        speed: action.payload.speed,
+        size: action.payload.size
       };
     case GET_SCORE:
       return {
