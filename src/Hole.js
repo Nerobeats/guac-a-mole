@@ -42,7 +42,17 @@ export class Hole extends Component {
       <img
         src="https://raw.githubusercontent.com/Nerobeats/guac-a-mole/master/src/assets/bebsi-nobg.png"
         alt="mole"
-        className={this.state.up ? "mole-pic-up" : "mole-pic-down"}
+        className={
+          this.state.up && this.state.clicked
+            ? "mole-pic-up"
+            : !this.state.up && this.state.clicked
+            ? "mole-pic-down"
+            : this.state.up && !this.state.clicked
+            ? "mole-pic-up animated wobble"
+            : !this.state.up && !this.state.clicked
+            ? "mole-pic-down animated wobble"
+            : null
+        }
         onClick={this.whack}
         style={{ transition: `bottom ${this.props.speed}s ease` }}
       />

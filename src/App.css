@@ -64,6 +64,8 @@
   bottom: -80px;
   transition: bottom 0.5s ease;
   cursor: pointer;
+  cursor: pointer;
+  animation-duration: 0.5s;
 }
 
 .mole-pic-up {
@@ -73,6 +75,7 @@
   bottom: 45px;
   transition: bottom 0.5s ease;
   cursor: pointer;
+  animation-duration: 0.5s;
 }
 
 .mole-pic.bonked {
@@ -100,56 +103,4 @@
   width: 100%;
   z-index: 5000;
   background-color: #b4b99f;
-}
-
-/* animations */
-
-@-webkit-keyframes shake {
-  from,
-  to {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-
-  10%,
-  30%,
-  50%,
-  70%,
-  90% {
-    -webkit-transform: translate3d(-10px, 0, 0);
-    transform: translate3d(-10px, 0, 0);
-  }
-
-  20%,
-  40%,
-  60%,
-  80% {
-    -webkit-transform: translate3d(10px, 0, 0);
-    transform: translate3d(10px, 0, 0);
-  }
-}
-
-@keyframes shake {
-  from,
-  to {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-
-  10%,
-  30%,
-  50%,
-  70%,
-  90% {
-    -webkit-transform: translate3d(-10px, 0, 0);
-    transform: translate3d(-10px, 0, 0);
-  }
-
-  20%,
-  40%,
-  60%,
-  80% {
-    -webkit-transform: translate3d(10px, 0, 0);
-    transform: translate3d(10px, 0, 0);
-  }
 }

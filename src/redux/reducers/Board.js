@@ -1,6 +1,6 @@
-import { GET_SCORE, SET_SETTINGS } from "../actions";
+import { GET_SCORE, SET_SETTINGS, PLAY_AUDIO } from "../actions";
 
-const initialState = { score: 0 };
+const initialState = { size: 3, score: 0, speed: 0.3 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -14,6 +14,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         score: action.payload + state.score
+      };
+    case PLAY_AUDIO:
+      return {
+        ...state,
+        score: action.payload
       };
     default:
       return state;
