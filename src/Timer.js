@@ -16,7 +16,10 @@ class Timer extends Component {
   render() {
     return (
       <div>
-        <font size="7"> &nbsp;&nbsp;&nbsp;Time: {this.props.time}</font>
+        <font size="7" color="white">
+          {" "}
+          &nbsp;&nbsp;&nbsp;Time: {this.props.time}
+        </font>
       </div>
     );
   }

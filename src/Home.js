@@ -29,16 +29,21 @@ class Home extends Component {
 
   render() {
     return (
-      <div className="card text-center">
+      <div>
         <br></br>
-        <div className="card-header">Coded Live Production</div>
-        <div className="card-body">
-          <h5 className="card-title">A Guack-A-Mole Creation</h5>
-          <p className="card-text">Choose the size, Hit Start and smash!</p>
-          <div className="row justify-content-md-center">
+        <font size="7" color="white">
+          <br></br>
+          Coded Live Production
+        </font>
+        <div>
+          <h5>A Guack-A-Mole Creation</h5>
+          <p>Choose the size, Hit Start and smash!</p>
+          <div className="row justify-content-md-center border-0">
             <div className="col-2">
               <br></br>
-              Speed
+              <font size="5" color="white">
+                speed
+              </font>
               <Slider
                 defaultValue={3}
                 marks={true}
@@ -52,13 +57,13 @@ class Home extends Component {
             </div>
           </div>
           <br></br>
-          <div className="row justify-content-md-center">
+          <div className="row justify-content-md-center border-0">
             <button
               type="button"
               class={
                 this.props.size === 2
-                  ? "btn btn-warning mr-3 active"
-                  : "btn btn-warning mr-3 disabled"
+                  ? "btn btn-outline-light mr-3 btn-lg active"
+                  : "btn btn-outline-light mr-3 btn-lg disabled"
               }
               onClick={() => this.onClick(2)}
             >
@@ -68,8 +73,8 @@ class Home extends Component {
               type="button"
               class={
                 this.props.size === 3
-                  ? "btn btn-success mr-3 active"
-                  : "btn btn-success mr-3 disabled"
+                  ? "btn btn-outline-light mr-3 btn-lg active"
+                  : "btn btn-outline-light mr-3 btn-lg disabled"
               }
               onClick={() => this.onClick(3)}
             >
@@ -79,25 +84,25 @@ class Home extends Component {
               type="button"
               class={
                 this.props.size === 4
-                  ? "btn btn-danger mr-3 active"
-                  : "btn btn-danger mr-3 disabled"
+                  ? "btn btn-outline-light btn-lg mr-3 active"
+                  : "btn btn-outline-light mr-3 btn-lg disabled"
               }
               onClick={() => this.onClick(4)}
             >
               4X4
             </button>
           </div>
+          <br />
+          <br />
           <Link
             to="/start/"
-            className="btn btn-primary mt-5"
+            className="btn btn-outline-light btn-lg mr-3 "
             onClick={this.start}
           >
-            start
+            <font size="5">start</font>
           </Link>
         </div>
-        <div className="card-footer text-muted">
-          bring nachos, you'll need them
-        </div>
+        <div>bring nachos, you'll need them</div>
       </div>
     );
   }

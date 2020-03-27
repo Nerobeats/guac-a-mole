@@ -3,6 +3,8 @@ import Hole from "./Hole";
 import Timer from "./Timer";
 import GameOver from "./GameOver";
 import { connect } from "react-redux";
+import { timer } from "./redux/actions";
+import { getScore } from "./redux/actions";
 import { Link } from "react-router-dom";
 
 class Board extends Component {
@@ -35,6 +37,11 @@ class Board extends Component {
     return Math.floor(Math.random() * (size * size));
   };
 
+  reset = () => {
+    this.props.timer(60);
+    this.props.getScore(-this.props.score);
+  };
+
   mapping = size => {
     let board = [],
       randNum = this.randomNum(size),
@@ -62,27 +69,26 @@ class Board extends Component {
     if (this.props.time > 0) {
       return (
         <div className="container-fluid">
-          <div className="row">
-            <div className="fixed-top text-left">
-              <br />
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" "}
-              <font size="7">Score: {this.props.score}</font>
-              <Timer />
-            </div>
-            <div className="fixed-top text-right">
-              <br />
-              <Link to="/" className="btn btn-secondary btn-lg">
-                Home
-              </Link>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            </div>
+          <div className="fixed-top text-left">
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" "}
+            <font size="7" color="white">
+              Score: {this.props.score}
+            </font>
+            <Timer />
           </div>
-          <br />
-          <br />
-          <div className="container"> {this.state.mapping}</div>
-          <br />
-          <br />
-          <br />
+          <div className="fixed-top text-right">
+            <br />
+            <Link
+              to="/"
+              className="btn btn-outline-light btn-lg"
+              onClick={() => this.reset()}
+            >
+              <font size="5">Home</font>
+            </Link>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div className="container"> {this.state.mapping}</div>
+          </div>
         </div>
       );
     } else {
@@ -98,4 +104,12 @@ const mapStateToProps = state => {
     time: state.board.time
   };
 };
-export default connect(mapStateToProps)(Board);
+
+const mapDispatchToProps = dispatch => {
+  return {
+    timer: time => dispatch(timer(time)),
+    getScore: score => dispatch(getScore(score))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Board);
