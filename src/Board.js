@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Hole from "./Hole";
+import Timer from "./Timer";
+import GameOver from "./GameOver";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -8,10 +10,11 @@ class Board extends Component {
     score: 0,
     time: 0,
     cycle: true,
-    mapping: []
+    mapping: [],
+    time: 60
   };
 
-  componentDidMount() {
+  componentDidMount = () => {
     this.setState({ mapping: this.mapping(this.props.size) });
     this.interval = setInterval(
       () =>
@@ -22,11 +25,11 @@ class Board extends Component {
         }),
       9000 * this.props.speed
     );
-  }
+  };
 
-  componentWillUnmount() {
+  componentWillUnmount = () => {
     clearInterval(this.interval);
-  }
+  };
 
   randomNum = size => {
     return Math.floor(Math.random() * (size * size));
@@ -56,25 +59,43 @@ class Board extends Component {
     return board;
   };
   render() {
-    return (
-      <div>
-        <div className="fixed-top text-right">
+    if (this.props.time > 0) {
+      return (
+        <div className="container-fluid">
+          <div className="row">
+            <div className="fixed-top text-left">
+              <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" "}
+              <font size="7">Score: {this.props.score}</font>
+              <Timer />
+            </div>
+            <div className="fixed-top text-right">
+              <br />
+              <Link to="/" className="btn btn-secondary btn-lg">
+                Home
+              </Link>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+          </div>
           <br />
-          <Link to="/" className="btn btn-secondary btn-lg">
-            Home
-          </Link>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <br />
+          <div className="container"> {this.state.mapping}</div>
+          <br />
+          <br />
+          <br />
         </div>
-        <div className="container"> {this.state.mapping}</div>
-      </div>
-    );
+      );
+    } else {
+      return <GameOver />;
+    }
   }
 }
 const mapStateToProps = state => {
   return {
     size: state.board.size,
     score: state.board.score,
-    speed: state.board.speed
+    speed: state.board.speed,
+    time: state.board.time
   };
 };
 export default connect(mapStateToProps)(Board);
