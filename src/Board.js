@@ -12,8 +12,7 @@ class Board extends Component {
     score: 0,
     time: 0,
     cycle: true,
-    mapping: [],
-    time: 60
+    mapping: []
   };
 
   componentDidMount = () => {
@@ -21,7 +20,6 @@ class Board extends Component {
     this.interval = setInterval(
       () =>
         this.setState({
-          time: Date.now(),
           cycle: !this.state.cycle,
           mapping: this.mapping(this.props.size)
         }),
@@ -77,6 +75,14 @@ class Board extends Component {
             </font>
             <Timer />
           </div>
+          <Sound
+            url="https://raw.githubusercontent.com/Nerobeats/guac-a-mole/master/src/assets/pepsi_man.mp3"
+            playStatus={Sound.status.PLAYING}
+            onLoading={this.handleSongLoading}
+            onPlaying={this.handleSongPlaying}
+            onFinishedPlaying={this.handleSongFinishedPlaying}
+            volume={70}
+          />
           <div className="fixed-top text-right">
             <br />
             <Link

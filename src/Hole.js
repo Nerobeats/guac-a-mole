@@ -30,6 +30,11 @@ export class Hole extends Component {
 
   whack = () => {
     if (this.state.clicked) {
+      let audio = new Audio(
+        "https://raw.githubusercontent.com/Nerobeats/guac-a-mole/master/src/assets/ahh-male-loud.mp3"
+      );
+      audio.volume = 1;
+      audio.play();
       this.props.getScore(1);
       this.setState({
         clicked: false

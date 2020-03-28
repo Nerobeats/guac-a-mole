@@ -3,6 +3,52 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { setSettings } from "./redux/actions";
 import { Slider } from "@material-ui/core";
+import { withStyles, makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    width: 300 + theme.spacing(3) * 2
+  },
+  margin: {
+    height: theme.spacing(3)
+  }
+}));
+
+const PrettoSlider = withStyles({
+  root: {
+    color: "#ffffff",
+    height: 8
+  },
+  thumb: {
+    height: 24,
+    width: 24,
+    backgroundColor: "#fff",
+    border: "2px solid currentColor",
+    marginTop: -8,
+    marginLeft: -12,
+    "&:focus, &:hover, &$active": {
+      boxShadow: "inherit"
+    }
+  },
+  active: {},
+  valueLabel: {
+    left: "calc(-50% + 4px)"
+  },
+  track: {
+    height: 8,
+    borderRadius: 4
+  },
+  rail: {
+    height: 8,
+    borderRadius: 4
+  },
+  valueLabel: {
+    "& *": {
+      color: "#000",
+      backgroundColor: "#fff"
+    }
+  }
+})(Slider);
 
 class Home extends Component {
   state = {
@@ -22,6 +68,7 @@ class Home extends Component {
   };
 
   start = () => {
+    this.state.audio.volume = 0.5;
     this.state.audio.pause();
     this.state.audio.currentTime = 0;
     this.state.audio.play();
@@ -44,9 +91,8 @@ class Home extends Component {
               <font size="5" color="white">
                 speed
               </font>
-              <Slider
+              <PrettoSlider
                 defaultValue={3}
-                marks={true}
                 min={1}
                 step={1}
                 max={5}
@@ -94,11 +140,7 @@ class Home extends Component {
           </div>
           <br />
           <br />
-          <Link
-            to="/start/"
-            className="btn btn-outline-light btn-lg mr-3 "
-            onClick={this.start}
-          >
+          <Link to="/start/" className="btn btn-outline-light btn-lg mr-3 ">
             <font size="5">start</font>
           </Link>
         </div>
