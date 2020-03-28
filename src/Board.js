@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import Hole from "./Hole";
 import Timer from "./Timer";
-import GameOver from "./GameOver";
 import { connect } from "react-redux";
 import { timer } from "./redux/actions";
 import { getScore } from "./redux/actions";
 import { Link, Redirect } from "react-router-dom";
-
+import Sound from "react-sound";
 class Board extends Component {
   state = {
     score: 0,

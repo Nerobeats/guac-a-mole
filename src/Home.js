@@ -53,10 +53,7 @@ const PrettoSlider = withStyles({
 class Home extends Component {
   state = {
     value: 3,
-    speeds: [0.5, 0.4, 0.3, 0.2, 0.1],
-    audio: new Audio(
-      "https://vgmdownloads.com/soundtracks/pepsiman-psx/vczmkygp/04_Stage%201.mp3"
-    )
+    speeds: [0.5, 0.4, 0.3, 0.2, 0.1]
   };
 
   handleChange = (event, newValue) => {
@@ -65,13 +62,6 @@ class Home extends Component {
 
   onClick = size => {
     this.props.setSettings(this.state.speeds[this.state.value - 1], size);
-  };
-
-  start = () => {
-    this.state.audio.volume = 0.5;
-    this.state.audio.pause();
-    this.state.audio.currentTime = 0;
-    this.state.audio.play();
   };
 
   render() {

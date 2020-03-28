@@ -13,7 +13,7 @@ export class Hole extends Component {
     if (this.state.counter < 2) {
       this.setState({
         up: !this.state.up,
-        counter: (this.state.counter += 1)
+        counter: this.state.counter + 1
       });
     } else {
       this.setState({ counter: 0, clicked: true });

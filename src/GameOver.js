@@ -33,7 +33,6 @@ const GameOver = props => {
           <br></br>
           <br></br>
           <br></br>
-
           <div>
             <img
               className="col-6"
