@@ -4,6 +4,7 @@ import Home from "./Home";
 import Board from "./Board";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
+import GameOver from "./GameOver";
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
       <Switch>
         <Route path="/home/" component={Home} />
         <Route path="/start/" component={Board} />
+        <Route path="/gameover/" component={GameOver} />
         <Redirect to="/home/" />
       </Switch>
     </div>

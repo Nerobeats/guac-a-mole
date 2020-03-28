@@ -5,7 +5,7 @@ import GameOver from "./GameOver";
 import { connect } from "react-redux";
 import { timer } from "./redux/actions";
 import { getScore } from "./redux/actions";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 class Board extends Component {
   state = {
@@ -92,7 +92,7 @@ class Board extends Component {
         </div>
       );
     } else {
-      return <GameOver />;
+      return <Redirect to="/gameover/" />;
     }
   }
 }
