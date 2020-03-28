@@ -43,6 +43,22 @@
   border-radius: 10px;
 }
 
+.btn-home {
+  position: absolute;
+  z-index: 2;
+  right: 0;
+}
+
+.text-left {
+  position: absolute;
+  z-index: 1;
+}
+
+.mapping {
+  position: relative;
+  z-index: 3;
+}
+
 .margin {
   margin: auto;
 }

@@ -65,13 +65,6 @@ class Board extends Component {
     return board;
   };
   render() {
-    const largeSpace = spaces => {
-      let arr = [];
-      for (let i = 0; i < spaces; i++) {
-        arr.push(<>&nbsp;</>);
-      }
-      return arr;
-    };
     if (this.props.time > 0) {
       return (
         <div className="container-fluid">
