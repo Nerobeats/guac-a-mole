@@ -13,11 +13,11 @@ const GameOver = props => {
       <br></br>
       <br></br>
       <br></br>
-      <h1>
-        <font size="30" color="white">
-          GAME OVER
-        </font>
-      </h1>
+      <img
+        className="col-6"
+        src="https://raw.githubusercontent.com/Nerobeats/guac-a-mole/master/src/assets/GAME-OVER.png"
+        alt="pepesi man"
+      />
       <div className="row">
         <br></br>
         <br></br>

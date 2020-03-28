@@ -53,7 +53,8 @@ const PrettoSlider = withStyles({
 class Home extends Component {
   state = {
     value: 3,
-    speeds: [0.5, 0.4, 0.3, 0.2, 0.1]
+    speeds: [0.5, 0.4, 0.3, 0.2, 0.1],
+    size: 3
   };
 
   handleChange = (event, newValue) => {
@@ -61,17 +62,34 @@ class Home extends Component {
   };
 
   onClick = size => {
-    this.props.setSettings(this.state.speeds[this.state.value - 1], size);
+    this.setState({ size });
+  };
+  setSettings = () => {
+    this.props.setSettings(
+      this.state.speeds[this.state.value - 1],
+      this.state.size
+    );
   };
 
   render() {
     return (
       <div>
         <br></br>
-        <font size="7" color="white">
-          <br></br>
-          Coded Live Production
-        </font>
+        {/* {
+          <font className="col-6" size="7" color="white">
+            <br></br>
+            Whack-A-
+          </font> */}
+        <img
+          className="col-4"
+          src="https://raw.githubusercontent.com/Nerobeats/guac-a-mole/master/src/assets/WHACK-A-%20(2).png"
+          alt="pepesi man"
+        />
+        <img
+          className="col-1"
+          src="https://raw.githubusercontent.com/Nerobeats/guac-a-mole/master/src/assets/bebsi-nobg.png"
+          alt="pepesi man"
+        />
         <div>
           <h5>A Guack-A-Mole Creation</h5>
           <p>Choose the size, Hit Start and smash!</p>
@@ -97,7 +115,7 @@ class Home extends Component {
             <button
               type="button"
               class={
-                this.props.size === 2
+                this.state.size === 2
                   ? "btn btn-outline-light mr-3 btn-lg active"
                   : "btn btn-outline-light mr-3 btn-lg disabled"
               }
@@ -108,7 +126,7 @@ class Home extends Component {
             <button
               type="button"
               class={
-                this.props.size === 3
+                this.state.size === 3
                   ? "btn btn-outline-light mr-3 btn-lg active"
                   : "btn btn-outline-light mr-3 btn-lg disabled"
               }
@@ -119,7 +137,7 @@ class Home extends Component {
             <button
               type="button"
               class={
-                this.props.size === 4
+                this.state.size === 4
                   ? "btn btn-outline-light btn-lg mr-3 active"
                   : "btn btn-outline-light mr-3 btn-lg disabled"
               }
@@ -130,7 +148,11 @@ class Home extends Component {
           </div>
           <br />
           <br />
-          <Link to="/start/" className="btn btn-outline-light btn-lg mr-3 ">
+          <Link
+            to="/start/"
+            className="btn btn-outline-light btn-lg mr-3 "
+            onClick={this.setSettings}
+          >
             <font size="5">start</font>
           </Link>
         </div>

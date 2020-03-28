@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import Hole from "./Hole";
 import Timer from "./Timer";
+import GameOver from "./GameOver";
 import { connect } from "react-redux";
 import { timer } from "./redux/actions";
 import { getScore } from "./redux/actions";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Sound from "react-sound";
+
 class Board extends Component {
   state = {
     score: 0,
@@ -63,6 +65,13 @@ class Board extends Component {
     return board;
   };
   render() {
+    const largeSpace = spaces => {
+      let arr = [];
+      for (let i = 0; i < spaces; i++) {
+        arr.push(<>&nbsp;</>);
+      }
+      return arr;
+    };
     if (this.props.time > 0) {
       return (
         <div className="container-fluid">
@@ -72,6 +81,7 @@ class Board extends Component {
             <font size="7" color="white">
               Score: {this.props.score}
             </font>
+            <br></br>
             <Timer />
           </div>
           <Sound
@@ -82,22 +92,22 @@ class Board extends Component {
             onFinishedPlaying={this.handleSongFinishedPlaying}
             volume={70}
           />
-          <div className="fixed-top text-right">
-            <br />
+          <br />
+          <div className="card border-0">
             <Link
               to="/"
-              className="btn btn-outline-light btn-lg"
+              className="btn btn-outline-light btn-lg btn-home"
               onClick={() => this.reset()}
             >
               <font size="5">Home</font>
             </Link>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <div className="container"> {this.state.mapping}</div>
           </div>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <div className="container mapping">{this.state.mapping}</div>
         </div>
       );
     } else {
-      return <Redirect to="/gameover/" />;
+      return <GameOver />;
     }
   }
 }
