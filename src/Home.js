@@ -2,53 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { setSettings } from "./redux/actions";
-import { Slider } from "@material-ui/core";
-import { withStyles, makeStyles } from "@material-ui/core/styles";
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    width: 300 + theme.spacing(3) * 2
-  },
-  margin: {
-    height: theme.spacing(3)
-  }
-}));
-
-const PrettoSlider = withStyles({
-  root: {
-    color: "#ffffff",
-    height: 8
-  },
-  thumb: {
-    height: 24,
-    width: 24,
-    backgroundColor: "#fff",
-    border: "2px solid currentColor",
-    marginTop: -8,
-    marginLeft: -12,
-    "&:focus, &:hover, &$active": {
-      boxShadow: "inherit"
-    }
-  },
-  active: {},
-  valueLabel: {
-    left: "calc(-50% + 4px)"
-  },
-  track: {
-    height: 8,
-    borderRadius: 4
-  },
-  rail: {
-    height: 8,
-    borderRadius: 4
-  },
-  valueLabel: {
-    "& *": {
-      color: "#000",
-      backgroundColor: "#fff"
-    }
-  }
-})(Slider);
+import WhiteSlider from "./WhiteSlider";
 
 class Home extends Component {
   state = {
@@ -74,7 +28,9 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <br></br>
+        <br />
+        <br />
+        <br />
         {/* {
           <font className="col-6" size="7" color="white">
             <br></br>
@@ -91,25 +47,11 @@ class Home extends Component {
           alt="pepesi man"
         />
         <div>
-          <h5>A Guack-A-Mole Creation</h5>
-          <p>Choose the size, Hit Start and smash!</p>
-          <div className="row justify-content-md-center border-0">
-            <div className="col-2">
-              <br></br>
-              <font size="5" color="white">
-                speed
-              </font>
-              <PrettoSlider
-                defaultValue={3}
-                min={1}
-                step={1}
-                max={5}
-                onChange={this.handleChange}
-                valueLabelDisplay="auto"
-                aria-labelledby="non-linear-slider"
-              />
-            </div>
-          </div>
+          <br />
+          <br />
+          <br />
+          <br />
+
           <br></br>
           <div className="row justify-content-md-center border-0">
             <button
@@ -146,6 +88,28 @@ class Home extends Component {
               4X4
             </button>
           </div>
+          <div className="row justify-content-md-center border-0">
+            <div className="col-2">
+              <br></br>
+              <br></br>
+              <WhiteSlider
+                defaultValue={3}
+                min={1}
+                step={1}
+                max={5}
+                onChange={this.handleChange}
+                valueLabelDisplay="auto"
+                aria-labelledby="non-linear-slider"
+              />
+              <font
+                size="5"
+                color="white"
+                style={{ font: "8BITWONDERNominal" }}
+              >
+                speed
+              </font>
+            </div>
+          </div>
           <br />
           <br />
           <Link
@@ -153,10 +117,9 @@ class Home extends Component {
             className="btn btn-outline-light btn-lg mr-3 "
             onClick={this.setSettings}
           >
-            <font size="5">start</font>
+            <font size="6">start</font>
           </Link>
         </div>
-        <div>bring nachos, you'll need them</div>
       </div>
     );
   }

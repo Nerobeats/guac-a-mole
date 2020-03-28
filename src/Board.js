@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import Hole from "./Hole";
 import Timer from "./Timer";
-import GameOver from "./GameOver";
 import { connect } from "react-redux";
 import { timer } from "./redux/actions";
 import { getScore } from "./redux/actions";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Sound from "react-sound";
 
 class Board extends Component {
@@ -65,7 +64,7 @@ class Board extends Component {
     return board;
   };
   render() {
-    if (this.props.time > 0) {
+    if (this.props.time > 55) {
       return (
         <div className="container-fluid">
           <div className="fixed-top text-left">
@@ -100,7 +99,11 @@ class Board extends Component {
         </div>
       );
     } else {
-      return <GameOver />;
+      return (
+        <Redirect
+          to={{ pathname: "/gameover/", state: { score2: this.props.score } }}
+        />
+      );
     }
   }
 }

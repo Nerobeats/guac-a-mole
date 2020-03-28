@@ -3,11 +3,11 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { getScore, timer } from "./redux/actions";
 
-const reset = props => {
-  props.timer(60);
-  props.getScore(-props.score);
-};
 const GameOver = props => {
+  const reset = props => {
+    props.timer(60);
+    props.getScore(-props.score);
+  };
   return (
     <div className="container-fluid">
       <br></br>
@@ -16,20 +16,19 @@ const GameOver = props => {
       <img
         className="col-6"
         src="https://raw.githubusercontent.com/Nerobeats/guac-a-mole/master/src/assets/GAME-OVER.png"
-        alt="pepesi man"
+        alt="game-over"
       />
+      <br></br>
+      <br></br>
+      <font size="7" color="white">
+        Score : {props.location.state.score2}
+      </font>
       <div className="row">
         <br></br>
         <br></br>
         <br></br>
         <br></br>
-        <br></br>
-        <br></br>
         <div className="col-4">
-          <font size="7" color="white">
-            Score : {props.score}
-          </font>
-          <br></br>
           <br></br>
           <br></br>
           <br></br>
@@ -37,7 +36,7 @@ const GameOver = props => {
             <img
               className="col-6"
               src="https://raw.githubusercontent.com/Nerobeats/guac-a-mole/master/src/assets/crushed%20pepsi.png"
-              alt="pepesi man"
+              alt="crushed-pepsi"
             />
           </div>
           <font size="7" color="white"></font>
@@ -49,30 +48,28 @@ const GameOver = props => {
           <br></br>
           <br></br>
           <br></br>
-          <br></br>
-          <br></br>
           <Link
             to="/home/"
             type="button"
-            class="btn btn-outline-light mr-3 btn-lg active"
+            class="btn btn-outline-light mr-3 btn-lg"
             onClick={reset(props)}
           >
-            Home
+            <font size="5">Home</font>
           </Link>
           <Link
             to="/start/"
             type="button"
-            class="btn btn-outline-light mr-3 btn-lg active"
+            class="btn btn-outline-light mr-3 btn-lg"
 
             // onClick={}
           >
-            Try Again
+            <font size="5">Try Again</font>
           </Link>
         </div>
         <img
           className="col-4"
           src="https://raw.githubusercontent.com/Nerobeats/guac-a-mole/master/src/assets/pepsi_man_stop-removebg-preview.png"
-          alt="pepesi man"
+          alt="pepsi-man"
         />
       </div>
     </div>

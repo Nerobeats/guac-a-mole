@@ -49,6 +49,11 @@
   right: 0;
 }
 
+.slider {
+  align-items: center;
+  justify-content: center;
+}
+
 .text-left {
   position: absolute;
   z-index: 1;
