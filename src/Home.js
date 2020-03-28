@@ -22,6 +22,7 @@ class Home extends Component {
   };
 
   start = () => {
+    this.state.audio.volume = 0.5;
     this.state.audio.pause();
     this.state.audio.currentTime = 0;
     this.state.audio.play();
@@ -94,11 +95,7 @@ class Home extends Component {
           </div>
           <br />
           <br />
-          <Link
-            to="/start/"
-            className="btn btn-outline-light btn-lg mr-3 "
-            onClick={this.start}
-          >
+          <Link to="/start/" className="btn btn-outline-light btn-lg mr-3 ">
             <font size="5">start</font>
           </Link>
         </div>
