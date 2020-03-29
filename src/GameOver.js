@@ -21,6 +21,8 @@ const GameOver = props => {
       <br></br>
       <br></br>
       <font size="7" color="white">
+        Highscore : {props.high}
+        <br></br>
         Score : {props.location.state.score2}
       </font>
       <div className="row">
@@ -60,8 +62,6 @@ const GameOver = props => {
             to="/start/"
             type="button"
             class="btn btn-outline-light mr-3 btn-lg"
-
-            // onClick={}
           >
             <font size="5">Try Again</font>
           </Link>
@@ -79,7 +79,8 @@ const mapToStateToProps = state => {
   return {
     score: state.board.score,
     size: state.board.size,
-    speed: state.board.speed
+    speed: state.board.speed,
+    high: state.board.highScore
   };
 };
 const mapDispatchToProps = dispatch => {

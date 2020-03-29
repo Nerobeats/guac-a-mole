@@ -1,6 +1,6 @@
 import { GET_SCORE, SET_SETTINGS, PLAY_AUDIO, TIMER } from "../actions";
 
-const initialState = { size: 3, score: 0, speed: 0.3, time: 60 };
+const initialState = { size: 3, score: 0, speed: 0.3, time: 60, highScore: 0 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -11,9 +11,16 @@ const reducer = (state = initialState, action) => {
         size: action.payload.size
       };
     case GET_SCORE:
+      const score = action.payload + state.score;
+      let highscore = state.highScore;
+      if (score > state.highScore) {
+        highscore = score;
+        localStorage.setItem("highscore", JSON.stringify(highscore));
+      }
       return {
         ...state,
-        score: action.payload + state.score
+        score: score,
+        highScore: highscore
       };
     case PLAY_AUDIO:
       return {
@@ -27,7 +34,9 @@ const reducer = (state = initialState, action) => {
       };
 
     default:
-      return state;
+      const prevHS = JSON.parse(localStorage.getItem("highscore"));
+      console.log(prevHS);
+      return { ...state, highScore: prevHS };
   }
 };
 
