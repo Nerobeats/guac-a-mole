@@ -3,6 +3,7 @@ import Hole from "./Hole";
 import Timer from "./Timer";
 import { connect } from "react-redux";
 import { timer } from "./redux/actions";
+import { getScore } from "./redux/actions";
 import { Link, Redirect } from "react-router-dom";
 import Sound from "react-sound";
 
@@ -117,7 +118,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    timer: time => dispatch(timer(time))
+    timer: time => dispatch(timer(time)),
+    getScore: score => dispatch(getScore(score))
   };
 };
 
